@@ -46,17 +46,17 @@ cleandata_meanSD$Activity <- as.factor(cleandata_meanSD$Activity)
 
 # Appropriately labels the data set with descriptive variable names. 
 
-names(cleandata_meanSD)<-gsub("Acc", "Accelerometer", names(cleandata_meanSD))
-names(cleandata_meanSD)<-gsub("Gyro", "Gyroscope", names(cleandata_meanSD))
-names(cleandata_meanSD)<-gsub("BodyBody", "Body", names(cleandata_meanSD))
-names(cleandata_meanSD)<-gsub("Mag", "Magnitude", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("^t", "Time", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("^f", "Frequency", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("tBody", "TimeBody", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("-mean()", "Mean", names(cleandata_meanSD), ignore.case = TRUE)
-names(cleandata_meanSD)<-gsub("-std()", "STD", names(cleandata_meanSD), ignore.case = TRUE)
+names(cleandata_meanSD)<-gsub("-std()", "StandDev", names(cleandata_meanSD), ignore.case = TRUE)
 names(cleandata_meanSD)<-gsub("-freq()", "Frequency", names(cleandata_meanSD), ignore.case = TRUE)
 names(cleandata_meanSD)<-gsub("angle", "Angle", names(cleandata_meanSD))
+names(cleandata_meanSD)<-gsub("Acc", "Acceleration", names(cleandata_meanSD))
+names(cleandata_meanSD)<-gsub("Gyro", "AngularSpeed", names(cleandata_meanSD))
+names(cleandata_meanSD)<-gsub("BodyBody", "Body", names(cleandata_meanSD))
+names(cleandata_meanSD)<-gsub("Mag", "Magnitude", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("gravity", "Gravity", names(cleandata_meanSD))
 
 # From the data set in step 4, creates a second, 
