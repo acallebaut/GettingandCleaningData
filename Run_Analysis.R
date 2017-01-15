@@ -39,9 +39,12 @@ cleandata_meanSD <- cleandata[,meanSD_col]
 # Replace the old name by the new name. 
 # Factor the activities
 cleandata_meanSD$Activity <- as.character(cleandata_meanSD$Activity)
-for (i in 1:6){
-  cleandata_meanSD$Activity[cleandata_meanSD$Activity == i] <- as.character(activity_labels[i,2])
-}
+cleandata_meanSD$Activity[cleandata_meanSD$Activity == 1] <- "WALKING"
+cleandata_meanSD$Activity[cleandata_meanSD$Activity == 2] <- "WALKING_UPSTAIRS"
+cleandata_meanSD$Activity[cleandata_meanSD$Activity == 3] <- "WALKING_DOWNSTAIRS"
+cleandata_meanSD$Activity[cleandata_meanSD$Activity == 4] <- "SITTING"
+cleandata_meanSD$Activity[cleandata_meanSD$Activity == 5] <- "STANDING"
+cleandata_meanSD$Activity[cleandata_meanSD$Activity == 6] <- "LAYING"
 cleandata_meanSD$Activity <- as.factor(cleandata_meanSD$Activity)
 
 # Appropriately labels the data set with descriptive variable names. 
@@ -49,9 +52,9 @@ cleandata_meanSD$Activity <- as.factor(cleandata_meanSD$Activity)
 names(cleandata_meanSD)<-gsub("^t", "Time", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("^f", "Frequency", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("tBody", "TimeBody", names(cleandata_meanSD))
-names(cleandata_meanSD)<-gsub("-mean()", "Mean", names(cleandata_meanSD), ignore.case = TRUE)
-names(cleandata_meanSD)<-gsub("-std()", "StandDev", names(cleandata_meanSD), ignore.case = TRUE)
-names(cleandata_meanSD)<-gsub("-freq()", "Frequency", names(cleandata_meanSD), ignore.case = TRUE)
+names(cleandata_meanSD)<-gsub("-mean()", "Mean", names(cleandata_meanSD))
+names(cleandata_meanSD)<-gsub("-std()", "StandDev", names(cleandata_meanSD))
+names(cleandata_meanSD)<-gsub("-freq()", "Frequency", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("angle", "Angle", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("Acc", "Acceleration", names(cleandata_meanSD))
 names(cleandata_meanSD)<-gsub("Gyro", "AngularSpeed", names(cleandata_meanSD))
@@ -64,7 +67,6 @@ names(cleandata_meanSD)<-gsub("gravity", "Gravity", names(cleandata_meanSD))
 # for each activity and each subject.
 
 cleandata_meanSD <- data.table(cleandata_meanSD)
-tidyData <- aggregate(. ~Subject + Activity, cleandata_meanSD, mean)
-tidyData <- tidyData[order(tidyData$Subject,tidyData$Activity),]
-write.table(tidyData, file = "TidyData.txt", row.names = FALSE)
-
+TidyData <- aggregate(. ~Subject + Activity, cleandata_meanSD, mean)
+TidyData <- TidyData[order(TidyData$Subject,TidyData$Activity),]
+write.table(TidyData, file = "TidyData.txt", row.names = FALSE)
