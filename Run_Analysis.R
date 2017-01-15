@@ -1,3 +1,6 @@
+# COURSERA 
+# ASSIGNMENT : GETTING AND CLEANING DATA
+
 library(data.table)
 library(dplyr)
 
