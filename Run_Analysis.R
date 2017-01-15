@@ -15,7 +15,7 @@ X_train <- read.table(paste0(getwd(),"/UCIHARDataset/train/X_train.txt"))
 Y_train <- read.table(paste0(getwd(),"/UCIHARDataset/train/Y_train.txt"))
 
 features_Names <- read.table(paste0(getwd(),"/UCIHARDataset/features.txt"), col.names=c("feature_ID", "feature_Name"))
-activity_labels <- read.table(paste0(getwd(), "/UCIHARDataset/activity_labels.txt"), col.names=c("activity_ID", "activity_Name"))
+activity_labels <- read.table(paste0(getwd(), "/UCIHARDataset/activity_labels.txt"))
 
 # Merge the datasets by subject, feature and activity
 subject <- rbind(subject_test, subject_train)
