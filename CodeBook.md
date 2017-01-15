@@ -11,7 +11,7 @@ The data linked to from the course website represent data collected from the acc
 The purpose of the assignment was to get the data and clean it. 
 
 The variables are:  
-* subjectId: participant 
+* subject: participant 
 * activity: activity of the participant 
 * tBodyAcc-mean-X 
 * tBodyAcc-mean-Y 
